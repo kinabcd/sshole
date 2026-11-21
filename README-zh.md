@@ -13,7 +13,9 @@
 
 ## 安裝
 
-需要 Go 1.27 以上版本：
+從[最新版本](https://github.com/kinabcd/sshole/releases/latest)下載 `sshole-windows-amd64.exe` 或 `sshole-linux-amd64`。每次推送到 `main` 都會自動建置新版本，版號格式為 `yyyymmdd.N`。
+
+或是自行建置，需要 Go 1.27 以上版本：
 
 ```sh
 go install github.com/kinabcd/sshole/cmd/sshole@latest

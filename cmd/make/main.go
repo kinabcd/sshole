@@ -5,6 +5,9 @@
 //	go tool make          # build out/sshole.exe for Windows (default)
 //	go tool make linux    # build out/sshole for Linux
 //	go tool make clean    # remove build artifacts
+//
+// Set VERSION to embed a version string (shown by `sshole -version`);
+// it defaults to "dev".
 package main
 
 import (
@@ -40,7 +43,12 @@ func build(goos, out string) {
 		fmt.Fprintf(os.Stderr, "create output dir: %v\n", err)
 		os.Exit(1)
 	}
-	cmd := exec.Command("go", "build", "-o", out, "./cmd/sshole")
+	args := []string{"build", "-o", out}
+	if v := os.Getenv("VERSION"); v != "" {
+		args = append(args, "-ldflags", "-X main.version="+v)
+	}
+	args = append(args, "./cmd/sshole")
+	cmd := exec.Command("go", args...)
 	cmd.Env = append(os.Environ(),
 		"CGO_ENABLED=0",
 		"GOOS="+goos,

@@ -15,7 +15,12 @@ any standard SSH client.
 
 ## Install
 
-Build it with Go 1.27 or later:
+Download `sshole-windows-amd64.exe` or `sshole-linux-amd64` from the
+[latest release](https://github.com/kinabcd/sshole/releases/latest). A new
+release, versioned `yyyymmdd.N`, is built automatically on every push to
+`main`.
+
+Or build it with Go 1.27 or later:
 
 ```sh
 go install github.com/kinabcd/sshole/cmd/sshole@latest
